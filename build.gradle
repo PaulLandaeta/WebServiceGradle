@@ -4,8 +4,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.12'
-    testCompile 'junit:junit:4.12'
+    compile 'org.slf4j:slf4j-simple:1.6.1'
     compile 'org.jboss.resteasy:resteasy-jaxrs:2.3.0.GA'
     compile 'org.jboss.resteasy:jaxrs-api:3.0.8.Final'
     compile 'org.jboss.resteasy:resteasy-jaxrs:3.0.8.Final'
@@ -18,6 +17,11 @@ dependencies {
     compile 'mysql:mysql-connector-java:5.1.30'
     compile 'org.hibernate:hibernate-c3p0:4.3.5.Final'
     compile "org.hibernate:hibernate-ehcache:4.3.5.Final"
+    compile 'org.quartz-scheduler:quartz:2.2.2'
+    compile 'com.google.code.gson:gson:1.7.2'
+    compile 'com.googlecode.json-simple:json-simple:1.1'
+
+
 }
 
 defaultTasks 'clean','assemble'

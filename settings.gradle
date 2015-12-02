@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'WebServiceGradle'
+rootProject.name = 'vizix-exxon-inventory-report'

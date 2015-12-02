@@ -1,5 +1,7 @@
 package com.mojix.resteasy;
 
+import com.mojix.web.services.Test;
+
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -12,7 +14,7 @@ public class app extends Application {
 
     protected HashSet<Object> singletons = new HashSet<Object>();
     public app() {
-
+        singletons.add(new Test());
     }
 
     @Override

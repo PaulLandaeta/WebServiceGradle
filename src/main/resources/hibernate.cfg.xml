@@ -15,13 +15,13 @@
 
         <!-- Assume test is the database name -->
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/leadGnome
+            jdbc:mysql://localhost:3306/
         </property>
         <property name="hibernate.connection.username">
-            leadgnome
+
         </property>
         <property name="hibernate.connection.password">
-            leadgnome
+
         </property>
         <property name="hibernate.hbm2ddl.auto">
             update
