@@ -1,13 +1,13 @@
 package com.mojix.services;
 
-import com.mojix.model.tag.Fields;
+
+import com.mojix.model.Tag.Fields;
 import com.mojix.model.thing.Thing;
 import com.mojix.model.thing.Things;
 import com.mojix.model.zone.Zone;
 import com.mojix.model.zone.ZoneProperties;
 import com.mojix.restClient.RestClientGet;
 import org.codehaus.jackson.map.ObjectMapper;
-import scala.tools.nsc.backend.icode.Members;
 
 import java.io.IOException;
 import java.util.*;
@@ -33,26 +33,42 @@ public class Tags {
             things = mapper.readValue(output, Things.class);
 
         }
-        Map<String,List<Thing>> zones=new HashMap<>();
+        Map<String,List<Thing > > zones=new HashMap<>();
+        Map<String,List<Thing > > zonesCurrent=new HashMap<>();
         List<Thing> thingsCurrent=new ArrayList<>();
         for(Thing thing:things.getResults()){
             if(thing.getFields()!=null) {
+                String lastInventory="";
+                String idZone="";
                 for (Fields fields : thing.getFields()) {
                     if(fields!=null && fields.getName()!=null && fields.getValue()!=null) {
-                        if (fields.getName().equals(LAST_INVENTORY) && fields.getValue().equals(date)) {
-                            thingsCurrent.add(thing);
+
+                        if (fields.getName().equals(LAST_INVENTORY) ){
+                            //thingsCurrent.add(thing);
+                            lastInventory= (String) fields.getValue();
                         }
                         if(fields.getName().equals(ZONE)){
-                            String idZone=this.getId(String.valueOf(fields.getValue()));
-                            if(zones.containsKey(idZone)){
-                                List<Thing> thingsZone = zones.get(idZone);
+                            idZone=this.getId(String.valueOf(fields.getValue()));
+                            if(zonesCurrent.containsKey(idZone)){
+                                List<Thing> thingsZone = zonesCurrent.get(idZone);
                                 thingsZone.add(thing);
                             }
                             else{
                                 List<Thing> thingsZone = new ArrayList<>();
                                 thingsZone.add(thing);
-                                zones.put(idZone,thingsZone);
+                                zonesCurrent.put(idZone,thingsZone);
                             }
+                        }
+                    }
+                    if(lastInventory.equals(date)) {
+                        if(zones.containsKey(idZone)){
+                            List<Thing> thingsZone = zones.get(idZone);
+                            thingsZone.add(thing);
+                        }
+                        else{
+                            List<Thing> thingsZone = new ArrayList<>();
+                            thingsZone.add(thing);
+                            zones.put(idZone,thingsZone);
                         }
                     }
                 }
@@ -60,6 +76,8 @@ public class Tags {
         }
         int markerfound=0;
         int tagsFound=0;
+        int current=things.getResults().size();
+
         Iterator zoneIt = zones.entrySet().iterator();
         while (zoneIt.hasNext()) {
             Map.Entry thisEntry = (Map.Entry) zoneIt.next();
@@ -79,10 +97,14 @@ public class Tags {
                 }
             }
         }
-
+        int diff=current-tagsFound;
+        Date lastUpdate=new Date();
+        System.out.println("Nros Current"+current);
         System.out.println("Nros Tags"+tagsFound);
         System.out.println("Nros rack"+zones.size());
         System.out.println("Nro Markers"+markerfound);
+        System.out.println("Nro Diff"+diff);
+
         return thingsCurrent;
     }
     public String getId(String value){

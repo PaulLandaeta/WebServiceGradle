@@ -1,7 +1,7 @@
 package com.mojix.model.thing;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.mojix.model.tag.Fields;
+import com.mojix.model.Tag.Fields;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.List;

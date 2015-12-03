@@ -1,6 +1,5 @@
-package com.mojix.model.tag;
+package com.mojix.model.Tag;
 
-import com.sun.corba.se.spi.ior.ObjectKey;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.Map;
