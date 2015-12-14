@@ -3,7 +3,7 @@ package com.mojix.properties;
 /**
  * Created by aquiroz on 10/2/2015.
  */
-public class PropertiesModel {
+public class    PropertiesModel {
 
     private String endpointPeoplePerZone;
     private String endpointDrinksPerRegion;

@@ -1,4 +1,4 @@
-package com.mojix.model.tag;
+package com.mojix.model.Tag;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;

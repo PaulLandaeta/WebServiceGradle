@@ -1,6 +1,8 @@
 package com.mojix.services;
 
-import com.mojix.model.tag.Tag;
+import com.mojix.model.Tag.Tag;
+import com.mojix.model.thing.Things;
+import com.mojix.properties.PropertiesController;
 import com.mojix.restClient.RestClientGet;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -14,16 +16,17 @@ public class ThingsService {
     private RestClientGet restclient;
     private PropertiesController propertiesController;
 
-    public Map<String,String> execute(int id) throws IOException {
+    public Things execute(String serialName) throws IOException {
         propertiesController = new PropertiesController();
-        restclient = new RestClientGet(propertiesController.getEndPointThings(id)+propertiesController.getParamsThings(),propertiesController.getBodyUsers());
+        restclient = new RestClientGet(propertiesController.getEndPointThings()+propertiesController.getParamsThings(serialName),propertiesController.getBodyUsers());
         String output = restclient.execute();
-        Tag tag=new Tag();
+        Things things=new Things();
         if(!output.isEmpty()) {
             ObjectMapper mapper = new ObjectMapper();
-            tag = mapper.readValue(output, Tag.class);
-            System.out.println(tag.getFields().size());
+            things = mapper.readValue(output, Things.class);
         }
-        return null;
+        return things;
     }
+
+
 }

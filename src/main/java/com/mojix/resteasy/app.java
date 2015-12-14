@@ -1,6 +1,6 @@
 package com.mojix.resteasy;
 
-import com.mojix.web.services.Test;
+import com.mojix.web.services.Inventory;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -14,7 +14,7 @@ public class app extends Application {
 
     protected HashSet<Object> singletons = new HashSet<Object>();
     public app() {
-        singletons.add(new Test());
+        singletons.add(new Inventory());
     }
 
     @Override

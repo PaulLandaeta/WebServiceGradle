@@ -10,7 +10,7 @@ import java.util.Properties;
  */
 public class LoadProperties {
 
-    private static final String ROUTE_PROPERTIES="/properties/project/project.properties";
+    private static final String ROUTE_PROPERTIES="/project/project.properties";
     private static Properties props;
     private static LoadProperties instance;
 
@@ -30,6 +30,7 @@ public class LoadProperties {
         try {
             String home = System.getProperty("catalina.home");
             System.out.println("Cargando Archivo de properties");
+            System.out.println(home);
             FileInputStream fis=new FileInputStream(new File(home+ROUTE_PROPERTIES));
             props.load(fis);
             System.out.println("Archivo de propiedades con exito.");
@@ -42,8 +43,8 @@ public class LoadProperties {
 
     public String getProperty(String key) {
         String value = null;
-        System.out.println(key);
-        System.out.println(props);
+     //   System.out.println(key);
+    //    System.out.println(props);
         if (props.containsKey(key)){
             value = (String) props.get(key);
         }

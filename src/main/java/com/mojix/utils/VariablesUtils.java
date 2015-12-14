@@ -36,8 +36,8 @@ public class VariablesUtils {
     public static final String HEADER_KEY="api_key";
     public static final String HEADER_VALUE="root";
     public static final String CONTENT_TYPE="application/json";
-    public static final String HEADER_KEY_PUT="X-ApiKey";
-    public static final String HEADER_VALUE_PUT="mZ1gPGu2YLnvcn19cPASi1ouO7Mv2CvQfjclozuvZKT992o6";
+    public static final String HEADER_KEY_PUT="api_key";
+    public static final String HEADER_VALUE_PUT="root";
 
     //END_POINT XDASHBOARD
     public static final String END_POINT_XDASHBOARD="https://kiosk-mmayorivera.c9.io/xdashboard";

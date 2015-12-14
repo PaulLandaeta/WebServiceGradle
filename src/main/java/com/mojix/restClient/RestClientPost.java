@@ -53,12 +53,12 @@ public class RestClientPost {
                     new InputStreamReader((response.getEntity().getContent())));
 
             System.out.println("Output from Server .... \n");
-            output= String.valueOf(response.getStatusLine().getStatusCode());
-            /*
+            //output= String.valueOf(response.getStatusLine().getStatusCode());
+
             while ((output = br.readLine()) != null) {
                 System.out.println(output+"\n");
                 return output;
-            }*/
+            }
             httpClient.getConnectionManager().shutdown();
         } catch (IOException e) {
             e.printStackTrace();

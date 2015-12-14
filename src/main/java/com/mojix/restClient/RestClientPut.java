@@ -48,7 +48,7 @@ public class RestClientPut {
             if (response.getStatusLine().getStatusCode() != 200) {
                 output= String.valueOf(response.getStatusLine().getStatusCode());
                 throw new RuntimeException("Failed : HTTP error code : "
-                        + response.getStatusLine().getStatusCode());
+                        + response);
 
             }
 
